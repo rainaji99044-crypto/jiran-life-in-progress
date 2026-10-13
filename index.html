@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#DCE5D8">
+  <meta name="description" content="嵇然的个人主页：一个正在升级自己的人类玩家。">
+  <title>正在加载中的嵇然｜Life in Progress</title>
+  <style>
+    :root{
+      --ink:#202420;--muted:#626b62;--line:#bfcbbc;--white:#fff;--page:#dce5d8;--surface:#eff3eb;--accent:#536b59;
+      --pink:#f3dde1;--pink-hover:#edcfd6;--yellow:#f8ebcb;--yellow-hover:#f1dfb5;
+      --blue:#dbe5f3;--blue-hover:#ccd9eb;--green:#d8ebd9;--green-hover:#c8e2cb;
+      --tag-pink:#f8d8df;--tag-yellow:#fff0c7;--tag-blue:#dce9ff;--tag-green:#ddf2e2;
+      --sans:"Source Han Sans SC","Noto Sans CJK SC","Microsoft YaHei","PingFang SC",Arial,sans-serif;
+    }
+    *{box-sizing:border-box}html{background:var(--page)}body{margin:0;min-width:0;color:var(--ink);background:var(--page);font-family:var(--sans);-webkit-font-smoothing:antialiased}body.inner-open{overflow:hidden!important}button{font:inherit;color:inherit}
+    .page{width:min(1440px,100%);min-height:100dvh;margin:0 auto;padding:0 clamp(20px,4.4vw,68px) clamp(18px,3vh,32px);display:grid;grid-template-rows:auto minmax(0,1fr)}
+    .site-header{height:clamp(60px,8vh,70px);display:flex;align-items:center;justify-content:space-between;gap:24px;border-bottom:1px solid var(--line)}
+    .brand{font-size:clamp(12px,1.15vw,16px);font-weight:800;letter-spacing:.01em;white-space:nowrap}.header-right{display:flex;align-items:center;gap:clamp(18px,2.5vw,36px)}.nav-words{color:var(--accent);font-size:clamp(10px,.95vw,13px);font-weight:700;letter-spacing:.11em;word-spacing:.5em;white-space:nowrap}
+    .menu-btn{width:38px;height:38px;padding:8px;display:grid;place-items:center;border:0;background:transparent;border-radius:50%;cursor:pointer;transition:background .2s ease}.menu-btn:hover{background:#cfdacd}.menu-btn svg{width:22px;height:22px;fill:none;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round}
+    .content{min-height:0;padding-top:clamp(16px,2.8vh,28px);display:grid;grid-template-rows:minmax(0,1fr) clamp(168px,25vh,218px);gap:clamp(16px,2.4vh,24px)}
+    .intro-grid{min-height:0;display:grid;grid-template-columns:minmax(0,48fr) minmax(0,52fr);gap:clamp(30px,5vw,76px);align-items:center}
+    .intro{min-width:0}.hero-title{margin:0;font-family:var(--sans);font-size:clamp(58px,min(7vw,9.6vh),104px);font-weight:950;letter-spacing:-.075em;line-height:.92}.hero-title span{display:block}.hero-title span:first-child{color:var(--ink)}.hero-title span:last-child{color:#49614f}.subtitle{margin:clamp(15px,2.4vh,24px) 0 0;color:#374039;font-size:clamp(23px,min(2.35vw,3.4vh),38px);font-weight:800;letter-spacing:-.035em;line-height:1.2}.facts{margin:clamp(14px,2vh,20px) 0 0;color:var(--muted);font-size:clamp(13px,1.2vw,17px);font-weight:550;letter-spacing:.02em}
+    .tags{margin-top:clamp(14px,2.2vh,22px);display:flex;flex-wrap:wrap;gap:8px}.tag{min-height:36px;padding:8px 13px;display:inline-flex;align-items:center;gap:7px;border:0;border-radius:999px;background:var(--tag-bg);font-size:clamp(12px,1.05vw,14px);font-weight:750;cursor:pointer;transition:transform .22s ease,filter .22s ease}.tag:hover{transform:scale(1.045);filter:saturate(1.12) brightness(.97)}.tag:active,.tag.is-pressed{transform:scale(.96)}.tag svg{width:15px;height:15px;fill:none;stroke:#202020;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.tag:nth-child(1){--tag-bg:var(--tag-pink)}.tag:nth-child(2){--tag-bg:var(--tag-yellow)}.tag:nth-child(3){--tag-bg:var(--tag-blue)}.tag:nth-child(4){--tag-bg:var(--tag-green)}
+    .photo-card{position:relative;width:100%;height:min(43vh,390px);min-height:235px;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:9px;background:transparent}.photo-surface{position:relative;min-height:0;overflow:hidden;border:1px solid var(--line);border-radius:22px;background:var(--surface);cursor:pointer}.photo-track{width:100%;height:100%;display:flex;opacity:0;transition:transform .65s cubic-bezier(.22,.75,.22,1),opacity .45s ease}.carousel-slide{flex:0 0 100%;width:100%;height:100%;display:block;object-fit:cover;filter:saturate(.88) contrast(.96) brightness(1.03);transition:transform .35s ease}.carousel-slide:nth-child(1){object-position:50% 46%}.carousel-slide:nth-child(2){object-position:50% 50%}.carousel-slide:nth-child(3){object-position:50% 45%}.carousel-slide:nth-child(4){object-position:50% 44%}.photo-card.has-photo .photo-track{opacity:1}.photo-surface:hover .carousel-slide{transform:scale(1.02)}.photo-fallback{position:absolute;inset:0;display:grid;place-items:center;color:#788078;font-size:14px;font-weight:700;letter-spacing:.08em}.photo-card.has-photo .photo-fallback{display:none}.carousel-dots{position:absolute;z-index:2;right:17px;bottom:17px;display:flex;gap:6px}.carousel-dot{width:6px;height:6px;border-radius:50%;background:#ffffff8f;box-shadow:0 1px 5px #0003;transition:width .25s ease,background-color .25s ease}.carousel-dot.is-active{width:19px;border-radius:999px;background:#fff}.random-trigger{position:relative;width:100%;min-height:68px;padding:10px 48px 10px 15px;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:13px;align-items:center;border:1px solid #b7c5b7;border-radius:18px;background:#eff3ebe8;text-align:left;cursor:pointer;transition:transform .25s ease,background-color .25s ease}.random-trigger:hover{transform:translateY(-2px);background:#fff}.random-eyebrow{grid-column:1;display:block;color:var(--accent);font-size:8px;font-weight:850;letter-spacing:.13em}.random-title{grid-column:1;display:block;margin-top:2px;font-size:14px;font-weight:900;letter-spacing:-.01em}.random-subtitle{grid-column:2;grid-row:1/3;display:-webkit-box;overflow:hidden;color:#3f4a41;font-size:11px;font-weight:650;line-height:1.35;-webkit-line-clamp:2;-webkit-box-orient:vertical}.random-hint{grid-column:2;display:none;color:#697269;font-size:8px;font-weight:750;letter-spacing:.05em}.random-arrow{position:absolute;top:50%;right:13px;width:28px;height:28px;display:grid;place-items:center;border-radius:50%;background:var(--accent);color:#fff;transform:translateY(-50%)}.random-arrow svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s ease}.random-trigger:hover .random-arrow svg{transform:translateX(3px)}.photo-surface:focus-visible,.random-trigger:focus-visible,.tag:focus-visible,.nav-card:focus-visible,.menu-btn:focus-visible,.close-btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+    .card-grid{min-height:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.4vw,18px)}.nav-card{--card-bg:#f4f4f4;--card-hover:#ededed;min-width:0;height:100%;padding:clamp(15px,1.7vw,23px);display:grid;grid-template-rows:auto 1fr auto;gap:8px;border:0;border-radius:20px;background:var(--card-bg);text-align:left;cursor:pointer;transition:transform .25s ease,background-color .25s ease}.nav-card:hover{transform:translateY(-4px);background:var(--card-hover)}.nav-card:active,.nav-card.is-pressed{transform:translateY(-1px) scale(.98)}.nav-card:nth-child(1){--card-bg:var(--pink);--card-hover:var(--pink-hover)}.nav-card:nth-child(2){--card-bg:var(--yellow);--card-hover:var(--yellow-hover)}.nav-card:nth-child(3){--card-bg:var(--blue);--card-hover:var(--blue-hover)}.nav-card:nth-child(4){--card-bg:var(--green);--card-hover:var(--green-hover)}
+    .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.card-index{color:#676767;font-size:clamp(10px,.9vw,12px);font-weight:650;letter-spacing:.08em}.card-symbol{flex:none;color:#202020;font-family:Arial,"Microsoft YaHei",sans-serif;font-size:clamp(24px,2vw,30px);font-weight:500;line-height:.85}.card-copy{align-self:end;min-width:0}.card-title{display:block;margin:0;font-size:clamp(20px,1.8vw,28px);font-weight:900;letter-spacing:-.04em;line-height:1.08;overflow-wrap:anywhere}.card-desc{display:block;margin:7px 0 0;color:#555;font-size:clamp(10px,.95vw,13px);font-weight:550;white-space:normal}.arrow-circle{justify-self:end;width:38px;height:38px;display:grid;place-items:center;border:0;border-radius:50%;background:#fff}.arrow-circle svg{width:18px;height:18px;fill:none;stroke:#202020;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s ease}.nav-card:hover .arrow-circle svg{transform:translateX(4px)}
+    .toast{position:fixed;z-index:30;left:50%;bottom:max(22px,env(safe-area-inset-bottom));max-width:calc(100vw - 30px);padding:11px 18px;border-radius:999px;color:#fff;background:var(--ink);font-size:13px;font-weight:650;text-align:center;opacity:0;transform:translate(-50%,12px);pointer-events:none;transition:opacity .2s ease,transform .2s ease}.toast.show{opacity:1;transform:translate(-50%,0)}
+    .modal{position:fixed;z-index:40;inset:0;padding:20px;display:grid;place-items:center;background:#1f291f66;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:1;transition:opacity .22s ease}.modal[hidden]{display:none}.modal-panel{width:min(470px,100%);padding:30px;border-radius:22px;background:#fff;box-shadow:0 18px 60px #17201933;animation:panelIn .24s ease both}.modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}.modal-eyebrow{margin:0 0 7px;color:var(--accent);font-size:11px;font-weight:750;letter-spacing:.11em}.modal-title{margin:0;font-size:28px;font-weight:900;letter-spacing:-.04em}.modal-text{margin:18px 0 0;color:var(--muted);font-size:15px;line-height:1.7}.close-btn{flex:none;width:36px;height:36px;display:grid;place-items:center;border:1px solid #d6ded4;border-radius:50%;background:#fff;cursor:pointer}.close-btn svg{width:17px;height:17px;stroke:var(--ink);stroke-width:1.8;stroke-linecap:round}
+    .inner-page{display:none;min-height:100dvh;padding:0 clamp(20px,4.4vw,68px) 54px}.inner-page.is-active{display:block;animation:fadeIn .28s ease both}.inner-header{height:70px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.back-home,.text-link,.mini-tab,.mode-tab,.timeline-node,.more-toggle,.interest-card,.fun-card,.answer,.secondary-btn,.primary-btn{font:inherit;color:inherit;cursor:pointer}.back-home{min-height:40px;padding:0 14px;border:1px solid #aebcae;border-radius:999px;background:#eef3eb;font-size:12px;font-weight:800}.inner-brand{font-size:12px;font-weight:800;letter-spacing:.08em}.inner-main{width:min(1304px,100%);margin:0 auto}.page-hero{padding:clamp(42px,7vw,88px) 0 clamp(30px,5vw,60px);display:grid;grid-template-columns:1fr auto;gap:26px;align-items:end}.page-kicker{margin:0 0 12px;color:var(--accent);font-size:12px;font-weight:850;letter-spacing:.14em}.page-title{margin:0;font-size:clamp(48px,7vw,92px);font-weight:950;letter-spacing:-.07em;line-height:.95}.page-subtitle{margin:15px 0 0;color:var(--muted);font-size:clamp(18px,2vw,28px);font-weight:750}.page-number{color:#93a292;font-size:clamp(54px,9vw,130px);font-weight:950;letter-spacing:-.08em;line-height:.8}.keyword-row{display:flex;flex-wrap:wrap;gap:8px}.keyword{padding:7px 11px;border:1px solid #9cac9d;border-radius:999px;font-size:11px;font-weight:750}.section-ending{padding:44px 0 10px;text-align:center;color:var(--accent);font-size:13px;font-weight:800;letter-spacing:.08em}
+    .about-layout{display:grid;grid-template-columns:230px minmax(270px,.9fr) minmax(340px,1.35fr);gap:22px;align-items:stretch}.mode-menu{display:grid;gap:9px}.mode-tab{min-height:64px;padding:13px 15px;border:1px solid #b8c5b7;border-radius:15px;background:#eef3eb;text-align:left;font-size:12px;font-weight:850}.mode-tab.is-active{background:var(--mode-color);border-color:transparent;transform:translateX(5px)}.mode-cover{min-height:430px;padding:28px;display:flex;flex-direction:column;justify-content:space-between;border-radius:24px;background:var(--mode-color);overflow:hidden}.cover-number{font-size:13px;font-weight:850;letter-spacing:.12em}.cover-word{font-size:clamp(46px,5vw,78px);font-weight:950;letter-spacing:-.07em;line-height:.82;overflow-wrap:anywhere}.cover-tagline{font-size:12px;font-weight:800;letter-spacing:.1em}.mode-story{padding:clamp(24px,3vw,42px);border-radius:24px;background:#fff}.mode-story h2{margin:0;font-size:clamp(27px,3vw,45px);line-height:1.16;letter-spacing:-.05em}.mode-story>p{color:var(--muted);font-size:14px;line-height:1.72}.work-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:17px}.work-stage{padding:14px;border-radius:15px;background:#f3f6f1}.work-stage.is-now{background:var(--mode-color)}.work-stage small{display:block;color:var(--accent);font-size:8px;font-weight:850;letter-spacing:.11em}.work-stage h3{margin:8px 0 5px;font-size:15px;line-height:1.22}.work-stage p{margin:0;color:var(--muted);font-size:11px;line-height:1.5}.work-note,.skills-box{margin-top:10px;padding:12px 14px;border-radius:14px;background:var(--mode-color)}.work-note small,.skills-box small{display:block;margin-bottom:5px;color:var(--accent);font-size:8px;font-weight:850;letter-spacing:.12em}.work-note strong{font-size:13px}.skills-list{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.skills-list span{padding:9px;border-radius:10px;background:#ffffffa6;font-size:12px;font-weight:750}.text-link{display:inline-block;margin-top:18px;border:0;background:transparent;color:var(--accent);font-weight:850}
+    .timeline-nav{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:6px 0 26px}.timeline-nav:before{content:"";position:absolute;top:24px;right:4%;left:4%;border-top:1px solid #819281}.timeline-node{position:relative;z-index:1;padding:0 8px 12px;border:0;background:transparent;text-align:center}.timeline-dot{width:15px;height:15px;margin:17px auto 12px;border:4px solid var(--page);border-radius:50%;background:#879986;box-shadow:0 0 0 1px #879986}.timeline-node.is-active .timeline-dot{width:24px;height:24px;margin-top:12px;background:var(--ink)}.timeline-year{display:block;font-size:10px;font-weight:850}.timeline-label{display:block;margin-top:4px;color:var(--muted);font-size:11px}.journey-story{min-height:410px;padding:clamp(24px,4vw,46px);display:grid;grid-template-columns:1.3fr .7fr;gap:36px;border-radius:25px;background:#fff}.journey-copy h2{margin:0;font-size:clamp(28px,3.4vw,48px);letter-spacing:-.05em}.journey-meta{margin:9px 0 20px;color:var(--accent);font-size:13px;font-weight:800}.journey-copy p{color:var(--muted);font-size:14px;line-height:1.85}.journey-cover{padding:24px;display:flex;flex-direction:column;justify-content:space-between;border-radius:20px;background:var(--journey-color)}.journey-big-year{font-size:clamp(54px,7vw,100px);font-weight:950;letter-spacing:-.08em;line-height:.85}.journey-chapter{font-size:12px;font-weight:850;letter-spacing:.1em}.highlights{margin-top:18px;padding:16px 18px;border-radius:14px;background:#eff3eb}.highlights summary{cursor:pointer;font-size:12px;font-weight:850}.highlights ul{margin:13px 0 0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.7}.timeline-tail{margin:25px 0 0 80%;padding-top:12px;border-top:1px dashed #728373;text-align:right}.timeline-tail strong{display:block;font-size:13px}.timeline-tail small{color:var(--muted);letter-spacing:.12em}
+    .project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:12px}.project-card{min-height:0;padding:18px 20px;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto 1fr auto;gap:8px 16px;border:0;border-radius:22px;background:var(--project-color);text-align:left;cursor:pointer;transition:transform .25s ease,filter .25s ease}.project-card:hover,.fun-card:hover{transform:translateY(-4px)}.project-card:hover{filter:saturate(1.05) brightness(.985)}.project-number{grid-row:1/3;align-self:start;font-size:clamp(34px,3.7vw,58px);font-weight:950;letter-spacing:-.08em;line-height:.85}.project-meta{align-self:center;font-size:9px;font-weight:850;letter-spacing:.13em}.project-open{grid-column:3;grid-row:1;width:34px;height:34px;display:grid;place-items:center;border-radius:50%;background:#fff;font-size:18px;transition:transform .25s ease}.project-card:hover .project-open{transform:translate(3px,-3px)}.project-card h2{grid-column:2/4;align-self:end;margin:0;font-size:clamp(22px,2.2vw,34px);letter-spacing:-.05em}.project-card p{grid-column:1/3;margin:0;color:#505750;font-size:12px;line-height:1.45}.project-status{grid-column:3;align-self:end;justify-self:end;padding:6px 9px;border-radius:999px;background:#ffffff94;font-size:9px;font-weight:850;white-space:nowrap}.more-box{margin-top:10px;border-radius:16px;background:#eff3eb;overflow:hidden}.more-toggle{width:100%;padding:10px 16px;display:flex;justify-content:space-between;border:0;background:transparent;text-align:left;font-size:11px;font-weight:900}.experiment-list{padding:0 22px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.experiment-item{padding:14px;border-top:1px solid var(--line);font-size:12px}.experiment-item span{display:block;margin-top:5px;color:var(--muted);font-size:10px}.quote-end{padding:12px 0 0;text-align:center}.quote-end strong{display:block;font-size:clamp(18px,2.3vw,30px);letter-spacing:-.04em}.quote-end small{display:block;margin-top:6px;color:var(--accent);font-size:9px;letter-spacing:.12em}.project-modal-panel{width:min(720px,100%);max-height:min(82dvh,780px);overflow:auto}.project-sections{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}.project-section{padding:16px;border-radius:14px;background:#eff3eb}.project-section strong{display:block;margin-bottom:8px;font-size:10px;color:var(--accent);letter-spacing:.08em}.project-section p{margin:0;color:var(--muted);font-size:12px;line-height:1.65}.primary-btn,.secondary-btn{min-height:42px;padding:0 16px;border:0;border-radius:999px;font-size:12px;font-weight:850}.primary-btn{background:var(--accent);color:#fff}.secondary-btn{background:#eff3eb}.project-link{display:inline-flex;margin-top:18px;text-decoration:none}
+    .fun-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.fun-card{min-height:250px;padding:24px;display:flex;flex-direction:column;border:0;border-radius:22px;background:var(--fun-color);text-align:left;transition:transform .25s ease}.fun-card small{font-weight:850;letter-spacing:.12em}.fun-card h2{margin:auto 0 8px;font-size:clamp(27px,3vw,42px);letter-spacing:-.05em}.fun-card p{margin:0;color:#505850}.interaction-panel{margin-top:22px;padding:clamp(22px,4vw,44px);border-radius:24px;background:#fff}.interaction-panel[hidden]{display:none}.panel-top{display:flex;align-items:start;justify-content:space-between;gap:15px}.panel-top h2{margin:0;font-size:clamp(27px,3vw,42px)}.panel-close{border:0;background:transparent;font-size:22px;cursor:pointer}.quiz-progress{margin:25px 0 12px;color:var(--accent);font-weight:850}.quiz-question{font-size:clamp(20px,2.5vw,31px);font-weight:900}.answers{display:grid;gap:10px;margin-top:20px}.answer{padding:16px;border:1px solid #ccd5ca;border-radius:14px;background:#f8faf7;text-align:left}.answer:hover,.answer.is-selected{background:#dce5d8}.quiz-actions{margin-top:18px;display:flex;gap:10px}.result-score{font-size:clamp(66px,10vw,130px);font-weight:950;letter-spacing:-.08em}.interest-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}.interest-card{padding:20px;border:0;border-radius:18px;background:var(--interest-color);text-align:left}.interest-card h3{margin:28px 0 7px;font-size:23px}.interest-detail{display:none;margin-top:14px;padding-top:14px;border-top:1px solid #0002;color:var(--muted);font-size:13px;line-height:1.7}.interest-card.is-open .interest-detail{display:block;animation:fadeIn .25s ease}.note-form{display:grid;gap:12px;margin-top:22px}.note-form input,.note-form textarea{width:100%;padding:14px;border:1px solid #cbd4c9;border-radius:13px;background:#f8faf7;font:inherit}.note-form textarea{min-height:150px;resize:vertical}.note-feedback{min-height:20px;color:var(--accent);font-size:12px}.secret{text-align:center;background:#e2efe1}.secret-code{color:var(--accent);font-size:12px;font-weight:850;letter-spacing:.14em}.secret h2{margin:40px 0 12px;font-size:clamp(31px,5vw,62px);letter-spacing:-.06em}.secret p{font-size:17px}.secret small{display:block;margin-top:50px;letter-spacing:.14em}
+    .inner-page button:focus-visible,.inner-page a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+    /* One-screen view overrides */
+    body.inner-open{overflow:auto!important}.inner-page{min-height:100dvh;height:auto;overflow:visible;padding-bottom:28px}.inner-header{height:62px}.inner-main{min-height:calc(100dvh - 76px);height:auto;overflow:visible}.page-hero{padding:clamp(14px,2.3vh,22px) 0 clamp(12px,2vh,20px)}.page-title{font-size:clamp(40px,5.6vw,72px)}.page-subtitle{margin-top:8px;font-size:clamp(15px,1.6vw,22px)}.page-number{font-size:clamp(48px,7vw,96px)}.section-ending{padding:10px 0 0}
+    .timeline-nav{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;margin:0 0 12px;overflow:visible}.timeline-nav:before{top:22px;height:3px;border:0;border-radius:999px;background:linear-gradient(90deg,#9cb09e,#536b59)}.timeline-nav:after{content:"›";position:absolute;z-index:0;top:5px;right:1.5%;color:var(--accent);font-size:30px;font-weight:900}.timeline-node{padding:0 5px 8px}.timeline-dot{margin:16px auto 8px;box-shadow:0 0 0 2px #879986}.timeline-node.is-active .timeline-dot{width:23px;height:23px;margin-top:12px}.timeline-year{font-size:9px}.timeline-label{font-size:10px}.journey-story{height:min(58vh,500px);min-height:0;padding:clamp(18px,2.7vw,34px);gap:28px}.timeline-tail{margin:9px 0 0 76%;padding-top:7px}
+    .project-grid{height:min(55vh,470px)}.project-card{height:auto;min-height:0}.project-card p{font-size:12px;line-height:1.45}
+    .fun-grid{height:min(67vh,600px);gap:12px}.fun-card{min-height:0;padding:20px}.interaction-panel{position:fixed;z-index:45;inset:clamp(14px,4vw,42px);margin:0;padding:clamp(18px,3vw,34px);overflow:hidden;border:1px solid #c8d3c6;box-shadow:0 24px 80px #17201942}.interaction-panel:before{content:"";position:fixed;z-index:-1;inset:0;background:#1f291f55;backdrop-filter:blur(4px)}.interest-grid{height:calc(100% - 84px);grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.interest-card{min-height:0;padding:17px;overflow:hidden}.interest-card h3{margin:15px 0 6px;font-size:21px}.interest-card>p{margin:0;font-size:11px}.interest-detail{margin-top:8px;padding-top:8px;font-size:10px;line-height:1.4}.project-modal-panel{overflow:hidden}
+    .site-header{animation:fadeIn .45s ease both}.hero-title{animation:fadeUp .55s ease both}.subtitle,.facts,.tags{animation:fadeUp .55s ease both}.subtitle{animation-delay:.1s}.facts{animation-delay:.15s}.tags{animation-delay:.2s}.photo-card{animation:fadeIn .58s .12s ease both}.nav-card{animation:fadeUp .48s ease both}.nav-card:nth-child(1){animation-delay:.2s}.nav-card:nth-child(2){animation-delay:.28s}.nav-card:nth-child(3){animation-delay:.36s}.nav-card:nth-child(4){animation-delay:.44s}@keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}@keyframes panelIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+    @media(min-width:900px) and (min-height:700px){body{overflow:hidden}.page{height:100dvh}.content{overflow:hidden}}
+    @media(max-width:899px){.page{padding:0 20px 24px}.content{padding-top:20px;grid-template-rows:auto auto}.intro-grid{grid-template-columns:1fr;gap:20px}.photo-card{height:clamp(190px,34vh,320px);min-height:190px}.card-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(150px,auto)}.hero-title{font-size:clamp(54px,11vw,78px)}.subtitle{font-size:clamp(22px,4.2vw,31px)}}
+    @media(max-width:620px){.page{padding:0 14px max(12px,env(safe-area-inset-bottom))}.site-header{height:52px}.brand{max-width:calc(100vw - 72px);font-size:clamp(9px,2.85vw,12px);overflow:hidden;text-overflow:ellipsis}.nav-words{display:none}.header-right{gap:8px}.content{padding-top:10px;gap:11px}.intro-grid{gap:11px}.hero-title{font-size:clamp(44px,14vw,60px);line-height:.94}.subtitle{margin-top:9px;font-size:clamp(19px,5.8vw,25px)}.facts{margin-top:8px;font-size:11px}.tags{margin-top:9px;gap:6px}.tag{min-height:30px;padding:6px 9px;font-size:10px}.tag svg{width:12px;height:12px}.photo-card{height:clamp(172px,27dvh,220px);min-height:172px;border-radius:18px}.random-trigger{top:9px;left:9px;width:min(250px,calc(100% - 18px));min-height:86px;padding:10px 38px 9px 12px;border-radius:15px}.random-eyebrow{font-size:7px}.random-title{font-size:12px}.random-subtitle{margin-top:4px;font-size:9px}.random-hint{margin-top:4px;font-size:7px}.random-arrow{top:10px;right:10px;width:24px;height:24px}.carousel-dots{right:11px;bottom:11px}.card-grid{gap:8px;grid-auto-rows:minmax(118px,auto)}.nav-card{padding:11px;border-radius:16px}.card-index{font-size:8px}.card-symbol{font-size:20px}.card-title{font-size:clamp(16px,5.2vw,21px)}.card-desc{margin-top:5px;font-size:9px;line-height:1.3}.arrow-circle{width:29px;height:29px}.arrow-circle svg{width:14px;height:14px}.modal{padding:14px}.modal-panel{padding:24px}.modal-title{font-size:24px}}
+    @media(max-width:360px){.tag{padding-inline:8px}.card-desc{font-size:9px}.nav-card{padding:11px}.card-grid{grid-auto-rows:minmax(132px,auto)}}
+    @media(max-width:980px){.about-layout{grid-template-columns:1fr 1fr}.mode-menu{grid-column:1/-1;grid-template-columns:repeat(4,1fr)}.mode-cover{min-height:360px}.mode-story{grid-column:2}.project-grid{grid-template-columns:repeat(2,1fr)}.experiment-list{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:720px){.inner-page{padding:0 14px 34px}.inner-header{height:56px}.inner-brand{font-size:9px}.page-hero{padding:34px 0 28px;grid-template-columns:1fr}.page-number{display:none}.page-title{font-size:clamp(44px,13vw,68px)}.about-layout{grid-template-columns:1fr}.mode-menu{grid-template-columns:repeat(2,1fr)}.mode-tab{min-height:52px}.mode-tab.is-active{transform:none}.mode-cover{min-height:250px}.mode-story{grid-column:auto}.skills-list{grid-template-columns:1fr}.timeline-nav{padding-bottom:6px;overflow-x:auto;grid-template-columns:repeat(5,minmax(120px,1fr));scrollbar-width:none}.timeline-nav:before{display:none}.timeline-node{border-radius:13px;background:#eff3eb}.timeline-node.is-active{background:#fff}.journey-story{grid-template-columns:1fr;min-height:0}.journey-cover{min-height:220px;grid-row:1}.timeline-tail{margin-left:35%}.project-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.project-card{min-height:250px;padding:16px}.project-card h2{font-size:22px}.experiment-list{grid-template-columns:1fr 1fr}.project-sections{grid-template-columns:1fr}.fun-grid{grid-template-columns:1fr 1fr;gap:9px}.fun-card{min-height:200px;padding:17px}.fun-card h2{font-size:25px}.interest-grid{grid-template-columns:1fr}.interaction-panel{padding:20px}.modal{padding:12px}.project-modal-panel{max-height:88dvh}}
+    @media(max-width:420px){.project-grid,.fun-grid{grid-template-columns:1fr}.project-card,.fun-card{min-height:210px}.experiment-list{grid-template-columns:1fr}.page-subtitle{font-size:17px}.inner-brand{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}
+    @media(max-width:720px){
+      .inner-page{padding:0 12px 10px}.inner-header{height:50px}.inner-main{height:calc(100dvh - 60px)}.page-hero{padding:9px 0}.page-kicker{margin-bottom:3px;font-size:8px}.page-title{font-size:clamp(31px,9vw,43px)}.page-subtitle{margin-top:3px;font-size:12px}.section-ending{display:none}
+      .about-layout{height:calc(100% - 92px);display:grid;grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);gap:8px}.mode-menu{grid-template-columns:repeat(2,1fr);gap:5px}.mode-tab{min-height:38px;padding:7px 9px;font-size:9px}.mode-cover{display:none}.mode-story{grid-column:auto;min-height:0;padding:13px;overflow:hidden}.mode-story h2{font-size:clamp(20px,6vw,27px)}.mode-story>p{margin:7px 0;font-size:9px;line-height:1.4}.work-duo{gap:5px;margin-top:7px}.work-stage{padding:8px;border-radius:10px}.work-stage small{font-size:6px}.work-stage h3{margin:4px 0 3px;font-size:10px}.work-stage p{font-size:7px;line-height:1.3}.work-note,.skills-box{margin-top:5px;padding:7px 8px}.work-note small{font-size:6px}.work-note strong{font-size:9px}.keyword{padding:4px 7px;font-size:8px}.skills-list{grid-template-columns:repeat(2,1fr);gap:4px}.skills-list span{padding:6px;font-size:9px}
+      .timeline-nav{grid-template-columns:repeat(5,minmax(0,1fr));gap:0;margin-bottom:7px;padding:0;overflow:visible}.timeline-nav:before{display:block;top:15px;left:5%;right:5%;height:2px}.timeline-nav:after{top:1px;right:0;font-size:22px}.timeline-node{padding:0 1px 4px;background:transparent}.timeline-dot{width:10px;height:10px;margin:11px auto 5px;border-width:3px}.timeline-node.is-active .timeline-dot{width:16px;height:16px;margin-top:8px}.timeline-year{font-size:6px;letter-spacing:-.03em}.timeline-label{font-size:7px}.journey-story{height:calc(100% - 162px);display:block;padding:14px;overflow:hidden}.journey-cover{display:none}.journey-copy h2{font-size:clamp(20px,6vw,28px)}.journey-meta{margin:5px 0 8px;font-size:9px}.journey-copy p{font-size:10px;line-height:1.5}.highlights{margin-top:7px;padding:8px}.highlights summary{font-size:9px}.highlights ul{margin-top:6px;font-size:9px;line-height:1.45}.timeline-tail{margin:5px 0 0 40%;padding-top:4px}.timeline-tail strong{font-size:9px}.timeline-tail small{font-size:7px}
+      .project-grid{height:calc(100% - 150px);grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:6px}.project-card{height:auto;min-height:0;padding:9px;grid-template-columns:auto 1fr auto;gap:4px 6px;border-radius:14px}.project-number{font-size:23px}.project-meta{font-size:5px;letter-spacing:.08em}.project-open{width:22px;height:22px;font-size:12px}.project-card h2{grid-column:1/4;margin:auto 0 2px;font-size:15px}.project-card p{grid-column:1/4;font-size:7px;line-height:1.25}.project-status{grid-column:1/4;justify-self:start;padding:3px 5px;font-size:6px}.more-box{margin-top:5px}.more-toggle{padding:6px 10px;font-size:8px}.quote-end{padding-top:5px}.quote-end strong{font-size:12px}.quote-end small{margin-top:3px;font-size:7px}.experiment-list{position:fixed;z-index:50;inset:14px;display:grid;grid-template-columns:1fr 1fr;padding:60px 15px 15px;border-radius:18px;background:#fff}.experiment-list[hidden]{display:none}
+      .fun-grid{height:calc(100% - 105px);grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:7px}.fun-card{min-height:0;padding:12px;border-radius:16px}.fun-card small{font-size:7px}.fun-card h2{font-size:19px}.fun-card p{font-size:9px}.interaction-panel{inset:10px;padding:14px;border-radius:18px}.panel-top h2{font-size:25px}.interest-grid{height:calc(100% - 76px);grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:6px;margin-top:8px}.interest-card{padding:10px;border-radius:11px}.interest-card small{font-size:6px}.interest-card h3{margin:7px 0 3px;font-size:15px}.interest-card>p{font-size:8px;line-height:1.3}.interest-detail{font-size:7px;line-height:1.3}.interest-detail .keyword{font-size:6px;padding:2px 4px}.quiz-progress{margin:10px 0 6px}.quiz-question{font-size:20px}.answer{padding:10px}.note-form{gap:7px;margin-top:10px}.note-form input,.note-form textarea{padding:9px}.note-form textarea{min-height:90px}.secret h2{margin:22px 0 8px}.secret small{margin-top:24px}
+    }
+    @media(max-width:620px){.photo-card{height:clamp(196px,25dvh,220px);min-height:196px;grid-template-rows:minmax(0,1fr) 56px;gap:6px}.photo-surface{border-radius:16px}.random-trigger{top:auto;left:auto;width:100%;min-height:56px;padding:7px 38px 7px 10px;border-radius:14px;grid-template-columns:auto minmax(0,1fr);column-gap:8px}.random-eyebrow{font-size:6px}.random-title{font-size:10px}.random-subtitle{margin:0;font-size:8px;-webkit-line-clamp:2}.random-arrow{top:50%;right:8px;width:23px;height:23px}.carousel-dots{right:9px;bottom:9px}}
+    .work-switch{display:flex;gap:8px;margin:18px 0 12px}.mini-tab{min-height:38px;padding:8px 12px;border:1px solid #d6ddd4;border-radius:999px;background:#fff;font-size:11px;font-weight:800}.mini-tab.is-active{background:var(--ink);color:#fff}.work-detail h3{margin:0 0 7px;font-size:18px}.work-detail p{margin:0;color:var(--muted);font-size:12px;line-height:1.65}
+    .project-card{grid-template-rows:auto 58px auto 1fr auto}.project-number{grid-row:1}.project-visual{grid-column:1/4;grid-row:2;height:58px;align-self:end;display:flex;align-items:center;justify-content:center;border:1px solid #20242024;border-radius:12px;background:#ffffff40;overflow:hidden}.project-card h2{grid-column:1/4;grid-row:3}.project-card p{grid-column:1/3;grid-row:4}.project-status{grid-column:3;grid-row:5}.project-visual span{display:block;position:relative;border:1.5px solid var(--ink)}.project-visual.type-0 span{width:28px;height:45px;border-radius:7px}.project-visual.type-0 span:before{content:"";position:absolute;inset:6px 4px 13px;border:1px solid #20242055}.project-visual.type-0 span:after{content:"";position:absolute;bottom:5px;left:9px;width:8px;border-top:2px solid var(--ink)}.project-visual.type-1 span{width:45px;height:36px;background:linear-gradient(90deg,transparent 48%,#202420 48%,#202420 51%,transparent 51%)}.project-visual.type-1 span:before,.project-visual.type-1 span:after{content:"";position:absolute;left:6px;right:6px;border-top:2px solid var(--ink)}.project-visual.type-1 span:before{top:8px}.project-visual.type-1 span:after{top:16px}.project-visual.type-2 span{width:52px;height:34px;border-radius:5px}.project-visual.type-2 span:before{content:"";position:absolute;left:21px;top:9px;border-left:10px solid var(--ink);border-top:7px solid transparent;border-bottom:7px solid transparent}.project-visual.type-3 span{width:52px;height:36px;border-radius:5px}.project-visual.type-3 span:before{content:"_  _  _";position:absolute;left:7px;top:3px;font:700 11px/1 monospace;letter-spacing:2px}.project-visual.type-3 span:after{content:"</>";position:absolute;right:7px;bottom:5px;font:700 12px/1 monospace}.experiment-close{display:none}.interest-detail-view[hidden]{display:none}
+    body.modal-open{overflow:hidden!important}
+    @media(max-width:720px){
+      html{scroll-behavior:smooth}.page{min-height:100dvh;height:auto}.content{overflow:visible}.inner-page{height:auto;min-height:100dvh;overflow:visible;padding:0 16px calc(30px + env(safe-area-inset-bottom))}.inner-page.is-active{display:block}.inner-header{position:sticky;z-index:20;top:0;height:58px;background:color-mix(in srgb,var(--page) 94%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.back-home{min-height:40px;padding:0 13px;font-size:13px}.inner-brand{max-width:190px;font-size:10px}.inner-main{height:auto;min-height:0;overflow:visible}.page-hero{padding:26px 0 22px}.page-kicker{margin-bottom:7px;font-size:11px}.page-title{font-size:clamp(34px,10vw,42px)}.page-subtitle{margin-top:8px;font-size:16px;line-height:1.55}.page-number{display:none}.section-ending{display:block;padding:26px 0 8px;font-size:12px}
+      .about-layout{height:auto;display:grid;grid-template-columns:1fr;grid-template-rows:auto;gap:14px}.mode-menu{grid-template-columns:repeat(2,1fr);gap:8px}.mode-tab{min-height:58px;padding:11px 12px;font-size:12px;line-height:1.45}.mode-tab.is-active{transform:none;box-shadow:inset 0 0 0 2px var(--ink)}.mode-cover{display:flex;min-height:120px;height:120px;padding:16px 18px;border-radius:18px}.cover-number{font-size:11px}.cover-word{font-size:34px;line-height:.82}.cover-tagline{font-size:10px}.mode-story{grid-column:auto;padding:20px;border-radius:20px;overflow:visible}.mode-story h2{font-size:25px;line-height:1.25}.mode-story>p{margin:12px 0;font-size:15px;line-height:1.75}.keyword-row{gap:7px}.keyword{padding:6px 9px;font-size:12px}.work-switch{display:flex;gap:8px;margin:18px 0 12px}.mini-tab{min-height:42px;padding:8px 12px;font-size:13px}.work-detail h3{margin:0 0 8px;font-size:21px}.work-detail p{font-size:14px;line-height:1.7}.work-note,.skills-box{margin-top:14px;padding:14px}.work-note small,.skills-box small{font-size:10px}.work-note strong{font-size:14px}.skills-list{grid-template-columns:repeat(2,1fr);gap:8px}.skills-list span{padding:10px;font-size:13px}
+      .timeline-nav{display:flex;gap:10px;margin:0 -16px 18px;padding:2px 16px 8px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.timeline-nav::-webkit-scrollbar{display:none}.timeline-nav:before,.timeline-nav:after{display:none}.timeline-node{flex:0 0 142px;min-height:88px;padding:12px;border:1px solid #b8c5b7;border-radius:16px;background:#eff3eb;text-align:left;scroll-snap-align:start}.timeline-node.is-active{background:#fff;box-shadow:inset 0 0 0 2px var(--accent)}.timeline-dot{width:12px;height:12px;margin:0 0 10px;border:3px solid var(--page)}.timeline-node.is-active .timeline-dot{width:16px;height:16px;margin:0 0 6px}.timeline-year{font-size:11px}.timeline-label{margin-top:5px;font-size:13px}.journey-story{height:auto;min-height:0;display:block;padding:20px;border-radius:20px;overflow:visible}.journey-cover{display:none}.journey-copy h2{font-size:26px;line-height:1.25}.journey-meta{margin:9px 0 14px;font-size:13px}.journey-copy p{font-size:15px;line-height:1.75}.highlights{margin-top:14px;padding:14px}.highlights summary{font-size:14px}.highlights ul{margin-top:10px;font-size:14px;line-height:1.7}.timeline-tail{margin:22px 0 0 20%;padding-top:12px}.timeline-tail strong{font-size:14px}.timeline-tail small{font-size:10px}
+      .project-grid{height:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto;gap:12px}.project-card{height:auto;min-height:260px;padding:15px;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto auto 1fr auto;gap:10px 9px;border-radius:18px}.project-number{font-size:34px}.project-meta{font-size:10px}.project-open{width:34px;height:34px;font-size:18px}.project-visual{grid-row:2;height:64px}.project-card h2{grid-column:1/4;grid-row:3;margin:0;font-size:21px;line-height:1.25}.project-card p{grid-column:1/4;grid-row:4;font-size:13px;line-height:1.6}.project-status{grid-column:1/4;grid-row:5;justify-self:start;padding:6px 8px;font-size:11px;white-space:normal}.more-box{margin-top:16px}.more-toggle{padding:14px 16px;font-size:13px}.experiment-list{position:static;display:grid;grid-template-columns:1fr;gap:0;padding:0 16px 14px;border-radius:0;background:transparent}.experiment-list[hidden]{display:none}.experiment-close{display:block;justify-self:end;margin:0 0 6px;padding:7px 10px;border:0;border-radius:999px;background:var(--ink);color:#fff;font-size:12px}.experiment-item{padding:12px 0;font-size:14px}.experiment-item span{font-size:12px}.quote-end{padding:24px 0 8px}.quote-end strong{font-size:22px;line-height:1.35}.quote-end small{margin-top:8px;font-size:10px}.modal{padding:12px}.project-modal-panel{max-height:calc(100dvh - 24px);padding:22px 18px;overflow-y:auto;overscroll-behavior:contain}.modal-head{position:sticky;z-index:2;top:-22px;margin:-22px -18px 0;padding:22px 18px 12px;background:#fff}.modal-title{font-size:26px}.modal-text{font-size:15px;line-height:1.7}.project-sections{grid-template-columns:1fr;gap:10px}.project-section strong{font-size:11px}.project-section p{font-size:14px;line-height:1.7}
+      .fun-grid{height:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto;gap:10px}.fun-card{min-height:170px;padding:16px;border-radius:18px}.fun-card small{font-size:10px}.fun-card h2{margin:auto 0 8px;font-size:21px;line-height:1.25}.fun-card p{font-size:13px;line-height:1.5}.interaction-panel{position:fixed;z-index:45;inset:10px;margin:0;padding:20px 16px;border-radius:20px;overflow-y:auto;overscroll-behavior:contain}.panel-top{position:sticky;z-index:2;top:-20px;margin:-20px -16px 0;padding:20px 16px 12px;background:#fff}.panel-top h2{font-size:27px}.panel-top>div>p:not(.page-kicker){font-size:14px;line-height:1.6}.panel-close{min-width:40px;min-height:40px;font-size:26px}.quiz-progress{margin:22px 0 10px;font-size:13px}.quiz-question{font-size:22px;line-height:1.45}.answers{gap:12px}.answer{min-height:54px;padding:14px;font-size:15px;line-height:1.5}.quiz-actions{flex-wrap:wrap}.primary-btn,.secondary-btn{min-height:44px;font-size:14px}.result-score{font-size:72px}.interest-grid{height:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto;gap:10px;margin-top:14px}.interest-card{min-height:155px;padding:15px;border-radius:16px;overflow:visible}.interest-card small{font-size:10px}.interest-card h3{margin:24px 0 7px;font-size:20px}.interest-card>p{font-size:13px;line-height:1.55}.interest-card .interest-detail{display:none}.interest-detail-view{padding-top:12px}.interest-detail-view .interest-back{min-height:42px;padding:8px 12px;border:0;border-radius:999px;background:var(--ink);color:#fff;font-size:13px}.interest-detail-card{margin-top:14px;padding:20px;border-radius:18px;background:var(--interest-color)}.interest-detail-card small{font-size:11px;font-weight:850}.interest-detail-card h3{margin:18px 0 10px;font-size:26px}.interest-detail-card>p{font-size:15px;line-height:1.75}.note-form{gap:12px;margin-top:18px}.note-form input,.note-form textarea{padding:13px;font-size:16px}.note-form textarea{min-height:150px}.note-feedback{font-size:13px;line-height:1.5}.secret h2{margin:36px 0 12px;font-size:34px}.secret p{font-size:16px;line-height:1.7}.secret small{margin-top:42px;font-size:11px}
+    }
+    /* Interactive life map: a magazine-like dotted route with five clickable stages. */
+    .timeline-map{margin:0 0 18px;overflow:hidden;border-radius:26px;background:#f9fbf7}
+    .timeline-map-canvas{position:relative;height:350px;min-width:820px;padding:25px 24px}
+    .timeline-map-kicker{position:relative;z-index:3;margin:0;color:#708174;font-size:12px;font-weight:750;letter-spacing:.04em}
+    .timeline-wave{position:absolute;z-index:0;top:58px;left:3%;width:94%;height:220px;overflow:visible}
+    .timeline-wave path{fill:none;stroke:#a4b9a6;stroke-width:9;stroke-dasharray:16 15;stroke-linecap:butt}
+    .timeline-map .timeline-nav{position:absolute;z-index:1;inset:0;display:block;margin:0;padding:0;overflow:visible}
+    .timeline-map .timeline-nav:before,.timeline-map .timeline-nav:after{display:none}
+    .timeline-map .timeline-node{position:absolute;top:58px;width:132px;height:270px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;text-align:center;transform:none;scroll-snap-align:center}
+    .timeline-map .timeline-node:nth-child(1){left:1.5%}.timeline-map .timeline-node:nth-child(2){left:22.5%}.timeline-map .timeline-node:nth-child(3){left:43.5%}.timeline-map .timeline-node:nth-child(4){left:64.5%}.timeline-map .timeline-node:nth-child(5){right:1.5%}
+    .timeline-map .timeline-dot{position:absolute;top:92px;left:50%;width:72px;height:72px;margin:0;display:grid;place-items:center;border:5px solid #7e9a83;border-radius:50%;background:#e6ede3;color:#314237;font-size:24px;font-weight:500;box-shadow:none;transform:translateX(-50%);transition:transform .25s ease,background-color .25s ease,color .25s ease}
+    .timeline-map .timeline-node:nth-child(2) .timeline-dot,.timeline-map .timeline-node:nth-child(4) .timeline-dot{top:40px}.timeline-map .timeline-node:nth-child(5) .timeline-dot{top:78px}
+    .timeline-map .timeline-node:hover .timeline-dot{transform:translateX(-50%) scale(1.06)}
+    .timeline-map .timeline-node.is-active .timeline-dot{width:72px;height:72px;margin:0;background:var(--accent);color:#fff;box-shadow:0 0 0 6px #9bb09e}
+    .timeline-map .timeline-year{position:absolute;right:0;bottom:27px;left:0;display:block;color:var(--ink);font-size:15px;font-weight:850;letter-spacing:0}
+    .timeline-map .timeline-label{position:absolute;right:0;bottom:4px;left:0;display:block;margin:0;color:#718073;font-size:12px}
+    .project-experiments{grid-column:1/-1}
+    .project-experiments ul{margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;list-style:none}
+    .project-experiments li{padding:11px 12px;border-radius:10px;background:#fff;color:var(--ink);font-size:13px;font-weight:750}
+    .project-experiments li span{display:block;margin-top:4px;color:var(--muted);font-size:10px;font-weight:650}
+    @media(max-width:720px){
+      .timeline-map{margin:0 -16px 18px;border-radius:0;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-inline:contain}
+      .timeline-map::-webkit-scrollbar{display:none}
+      .timeline-map-canvas{width:820px;min-width:820px;height:320px;padding:20px 18px}
+      .timeline-map-kicker{font-size:11px}
+      .timeline-wave{top:45px;height:205px}
+      .timeline-map .timeline-node{top:44px;height:255px;min-height:0;padding:0;border:0;border-radius:0;background:transparent;text-align:center}
+      .timeline-map .timeline-dot{top:88px;width:64px;height:64px;border-width:4px;font-size:22px}
+      .timeline-map .timeline-node:nth-child(2) .timeline-dot,.timeline-map .timeline-node:nth-child(4) .timeline-dot{top:40px}.timeline-map .timeline-node:nth-child(5) .timeline-dot{top:75px}
+      .timeline-map .timeline-node.is-active .timeline-dot{width:64px;height:64px;margin:0;box-shadow:0 0 0 5px #9bb09e}
+      .timeline-map .timeline-year{bottom:26px;font-size:14px}.timeline-map .timeline-label{bottom:4px;font-size:12px}
+      .project-experiments ul{grid-template-columns:1fr}.project-experiments li{font-size:14px}
+    }
+    @media(max-width:375px){.project-grid{grid-template-columns:1fr}.project-card{min-height:250px}.fun-card{min-height:165px}.interest-grid{grid-template-columns:1fr}.interest-card{min-height:145px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <div class="brand">正在加载中的嵇然 / life in progress</div>
+      <div class="header-right">
+        <div class="nav-words">LIFE / EXPLORE / CREATE / ENJOY</div>
+        <button class="menu-btn" id="menuButton" type="button" aria-label="打开菜单">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M8 16h12"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="intro-grid" aria-labelledby="heroTitle">
+        <div class="intro">
+          <h1 class="hero-title" id="heroTitle"><span>你好，</span><span>我是嵇然。</span></h1>
+          <p class="subtitle">一个正在升级自己的人类玩家。</p>
+          <p class="facts">24岁 ｜ 江苏常州 ｜ 会计硕士在读</p>
+          <div class="tags" aria-label="个人标签">
+            <button class="tag" type="button" data-message="能量来自交流，也享受认识新朋友。">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 20v-1.6c0-2-1.8-3.4-4-3.4s-4 1.4-4 3.4V20M12 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/></svg><span>E人</span>
+            </button>
+            <button class="tag" type="button" data-message="看到新东西，总想先研究一下。">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.3"/><path d="m16 16 4 4"/></svg><span>好奇心旺盛</span>
+            </button>
+            <button class="tag" type="button" data-message="有想法，就先迈出第一步。">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 7l5 5-5 5"/></svg><span>行动派选手</span>
+            </button>
+            <button class="tag" type="button" data-message="把每一次尝试都变成新的经验值。">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 8a7 7 0 1 0 1 7M19 4v4h-4"/></svg><span>持续升级</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="photo-card" id="photoCard">
+          <div class="photo-surface" id="photoSurface" role="button" tabindex="0" aria-label="个人照片轮播：点击打招呼">
+            <div class="photo-track" id="photoTrack">
+              <img class="carousel-slide" src="profile-1.jpg" alt="嵇然在湖边的个人照片" onload="this.closest('.photo-card').classList.add('has-photo')">
+              <img class="carousel-slide" src="profile-2.jpg" alt="嵇然旅行时的个人照片" onload="this.closest('.photo-card').classList.add('has-photo')">
+              <img class="carousel-slide" src="profile-3.jpg" alt="嵇然与气球的个人照片" onload="this.closest('.photo-card').classList.add('has-photo')">
+              <img class="carousel-slide" src="profile-4.jpg" alt="嵇然轻松有趣的生活照片" onload="this.closest('.photo-card').classList.add('has-photo')">
+            </div>
+            <span class="photo-fallback">个人照片</span>
+            <span class="carousel-dots" aria-hidden="true"><span class="carousel-dot is-active"></span><span class="carousel-dot"></span><span class="carousel-dot"></span><span class="carousel-dot"></span></span>
+          </div>
+          <button class="random-trigger" id="randomTrigger" type="button" aria-label="随机认识我，点击换一条">
+            <span class="random-eyebrow">A LITTLE MORE ABOUT ME</span>
+            <strong class="random-title">随机认识我</strong>
+            <span class="random-subtitle" id="inlineFact" aria-live="polite">点击解锁一个关于我的小发现</span>
+            <span class="random-hint">点击换一条</span>
+            <span class="random-arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span>
+          </button>
+        </div>
+      </section>
+
+      <nav class="card-grid" aria-label="个人主页章节">
+        <button class="nav-card" type="button" data-title="人物说明书" data-index="01 / ABOUT ME">
+          <span class="card-top"><span class="card-index">01 / ABOUT ME</span><span class="card-symbol" aria-hidden="true">✿</span></span><span class="card-copy"><strong class="card-title">人物说明书</strong><span class="card-desc">解锁我的不同身份</span></span><span class="arrow-circle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span>
+        </button>
+        <button class="nav-card" type="button" data-title="人生地图" data-index="02 / JOURNEY">
+          <span class="card-top"><span class="card-index">02 / JOURNEY</span><span class="card-symbol" aria-hidden="true">✦</span></span><span class="card-copy"><strong class="card-title">人生地图</strong><span class="card-desc">看看我走过的路</span></span><span class="arrow-circle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span>
+        </button>
+        <button class="nav-card" type="button" data-title="奇思妙想制造局" data-index="03 / PROJECTS">
+          <span class="card-top"><span class="card-index">03 / PROJECTS</span><span class="card-symbol" aria-hidden="true">✳</span></span><span class="card-copy"><strong class="card-title">奇思妙想制造局</strong><span class="card-desc">展示做过的小项目</span></span><span class="arrow-circle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span>
+        </button>
+        <button class="nav-card" type="button" data-title="隐藏彩蛋" data-index="04 / FUN FACTS">
+          <span class="card-top"><span class="card-index">04 / FUN FACTS</span><span class="card-symbol" aria-hidden="true">♡</span></span><span class="card-copy"><strong class="card-title">隐藏彩蛋</strong><span class="card-desc">认识不一样的我</span></span><span class="arrow-circle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span>
+        </button>
+      </nav>
+    </main>
+  </div>
+
+  <section class="inner-page" id="aboutPage" aria-labelledby="aboutPageTitle">
+    <header class="inner-header"><button class="back-home" type="button">← 返回首页</button><span class="inner-brand">正在加载中的嵇然 / LIFE IN PROGRESS</span></header>
+    <main class="inner-main">
+      <div class="page-hero"><div><p class="page-kicker">01 / ABOUT ME</p><h1 class="page-title" id="aboutPageTitle">人物说明书</h1><p class="page-subtitle">一个人，可以有很多种打开方式。</p></div><span class="page-number">01</span></div>
+      <div class="about-layout" id="aboutLayout">
+        <div class="mode-menu" aria-label="身份切换">
+          <button class="mode-tab is-active" type="button" data-mode="work">01 / WORK MODE<br>工作模式</button>
+          <button class="mode-tab" type="button" data-mode="study">02 / STUDY MODE<br>学习模式</button>
+          <button class="mode-tab" type="button" data-mode="create">03 / CREATE MODE<br>创作模式</button>
+          <button class="mode-tab" type="button" data-mode="life">04 / LIFE MODE<br>生活模式</button>
+        </div>
+        <article class="mode-cover" id="modeCover"><span class="cover-number" id="coverNumber">01 / 04</span><strong class="cover-word" id="coverWord">WORK<br>MODE</strong><span class="cover-tagline" id="coverTagline">LEARNING BY DOING</span></article>
+        <article class="mode-story" id="modeStory" aria-live="polite"></article>
+      </div>
+      <p class="section-ending">持续加载中，未完待续。</p>
+    </main>
+  </section>
+
+  <section class="inner-page" id="journeyPage" aria-labelledby="journeyPageTitle">
+    <header class="inner-header"><button class="back-home" type="button">← 返回首页</button><span class="inner-brand">正在加载中的嵇然 / LIFE IN PROGRESS</span></header>
+    <main class="inner-main">
+      <div class="page-hero"><div><p class="page-kicker">02 / JOURNEY</p><h1 class="page-title" id="journeyPageTitle">人生地图</h1><p class="page-subtitle">每个阶段，都在解锁新的自己。</p></div><span class="page-number">02</span></div>
+      <section class="timeline-map" aria-label="人生互动时间线">
+        <div class="timeline-map-canvas">
+          <p class="timeline-map-kicker">MY LIFE / INTERACTIVE TIMELINE</p>
+          <svg class="timeline-wave" viewBox="0 0 1000 240" preserveAspectRatio="none" aria-hidden="true"><path d="M55 145 C135 45 235 45 315 145 S495 245 575 145 S755 45 835 145 S925 225 970 90"/></svg>
+          <div class="timeline-nav" id="timelineNav"></div>
+        </div>
+      </section>
+      <article class="journey-story" id="journeyStory" aria-live="polite"></article>
+      <div class="timeline-tail"><strong>下一站，未知但值得期待。</strong><small>TO BE CONTINUED...</small></div>
+    </main>
+  </section>
+
+  <section class="inner-page" id="projectsPage" aria-labelledby="projectsPageTitle">
+    <header class="inner-header"><button class="back-home" type="button">← 返回首页</button><span class="inner-brand">正在加载中的嵇然 / LIFE IN PROGRESS</span></header>
+    <main class="inner-main">
+      <div class="page-hero"><div><p class="page-kicker">03 / PROJECTS</p><h1 class="page-title" id="projectsPageTitle">奇思妙想制造局</h1><p class="page-subtitle">把想法变成作品，把好奇心变成行动。</p></div><span class="page-number">03</span></div>
+      <div class="project-grid" id="projectGrid"></div>
+      <div class="quote-end"><strong>“我的脑洞数量，暂时领先于我的完成速度。”</strong><small>MORE IDEAS ARE LOADING...</small></div>
+    </main>
+  </section>
+
+  <section class="inner-page" id="funPage" aria-labelledby="funPageTitle">
+    <header class="inner-header"><button class="back-home" type="button">← 返回首页</button><span class="inner-brand">正在加载中的嵇然 / LIFE IN PROGRESS</span></header>
+    <main class="inner-main">
+      <div class="page-hero"><div><p class="page-kicker">04 / FUN FACTS</p><h1 class="page-title" id="funPageTitle">隐藏彩蛋</h1><p class="page-subtitle">既然都看到这里了，不如一起玩点有趣的？</p></div><span class="page-number">04</span></div>
+      <div class="fun-grid">
+        <button class="fun-card" type="button" data-panel="quiz" style="--fun-color:var(--pink)"><small>OUR VIBE CHECK</small><h2>我们有多合拍？</h2><p>看看我们是不是同频玩家。</p></button>
+        <button class="fun-card" type="button" data-panel="collection" style="--fun-color:var(--yellow)"><small>MY LITTLE COLLECTION</small><h2>兴趣收藏夹</h2><p>点开看看我的快乐来源。</p></button>
+        <button class="fun-card" type="button" data-panel="note" style="--fun-color:var(--blue)"><small>A LITTLE NOTE FOR ME</small><h2>给我留张小纸条</h2><p>想打个招呼？先把一句话写下来。</p></button>
+        <button class="fun-card" type="button" data-panel="secret" style="--fun-color:var(--green)"><small>SECRET UNLOCKED</small><h2>最后一个彩蛋</h2><p>谢谢你看到这里。</p></button>
+      </div>
+      <section class="interaction-panel" id="quizPanel" hidden><div class="panel-top"><div><p class="page-kicker">OUR VIBE CHECK</p><h2>我们有多合拍？</h2></div><button class="panel-close" type="button" aria-label="关闭">×</button></div><div id="quizContent"></div></section>
+      <section class="interaction-panel" id="collectionPanel" hidden><div class="panel-top"><div><p class="page-kicker">MY LITTLE COLLECTION</p><h2>兴趣收藏夹</h2><p>生活不止一种打开方式，点开看看我的快乐来源。</p></div><button class="panel-close" type="button" aria-label="关闭">×</button></div><div class="interest-grid" id="interestGrid"></div><div class="interest-detail-view" id="interestDetailView" hidden></div></section>
+      <section class="interaction-panel" id="notePanel" hidden><div class="panel-top"><div><p class="page-kicker">A LITTLE NOTE FOR ME</p><h2>嗨，陌生朋友！</h2><p>如果你也喜欢探索新鲜事物，或者只是想打个招呼，欢迎留下一句话。</p></div><button class="panel-close" type="button" aria-label="关闭">×</button></div><form class="note-form" id="noteForm"><input id="noteName" type="text" maxlength="30" placeholder="你的昵称（选填）"><textarea id="noteText" required maxlength="300" placeholder="写下一句话……"></textarea><div><button class="primary-btn" type="submit">复制留言</button></div><p class="note-feedback" id="noteFeedback" aria-live="polite">静态页面不会自动发送；点击后会复制到你的剪贴板。</p></form></section>
+      <section class="interaction-panel secret" id="secretPanel" hidden><div class="panel-top"><span></span><button class="panel-close" type="button" aria-label="关闭">×</button></div><span class="secret-code">SECRET UNLOCKED / 100%</span><h2>其实，我也还在认识自己。</h2><p>谢谢你花时间认识正在加载中的我。</p><small>TO BE CONTINUED...</small></section>
+    </main>
+  </section>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal-panel">
+      <div class="modal-head">
+        <div><p class="modal-eyebrow" id="modalIndex"></p><h2 class="modal-title" id="modalTitle"></h2></div>
+        <button class="close-btn" id="closeModal" type="button" aria-label="关闭内容面板"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      </div>
+      <p class="modal-text">这个章节正在加载中……</p>
+    </div>
+  </div>
+
+  <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle" hidden>
+    <div class="modal-panel project-modal-panel">
+      <div class="modal-head"><div><p class="modal-eyebrow" id="projectModalIndex"></p><h2 class="modal-title" id="projectModalTitle"></h2></div><button class="close-btn" id="closeProject" type="button" aria-label="关闭项目档案"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+      <p class="modal-text" id="projectModalTagline"></p><div class="project-sections" id="projectSections"></div><a class="primary-btn project-link" id="projectLink" target="_blank" rel="noopener" hidden>VIEW PROJECT / 体验项目</a>
+    </div>
+  </div>
+
+  <script>
+    const toast=document.getElementById('toast');
+    const modal=document.getElementById('modal');
+    const modalTitle=document.getElementById('modalTitle');
+    const modalIndex=document.getElementById('modalIndex');
+    const closeModal=document.getElementById('closeModal');
+    const randomTrigger=document.getElementById('randomTrigger');
+    const inlineFact=document.getElementById('inlineFact');
+    const photoCard=document.getElementById('photoCard');
+    const photoSurface=document.getElementById('photoSurface');
+    const photoTrack=document.getElementById('photoTrack');
+    const slides=[...document.querySelectorAll('.carousel-slide')];
+    const carouselDots=[...document.querySelectorAll('.carousel-dot')];
+    const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const facts=[
+      '我的好奇心通常比行动力先到现场。',
+      '人生信条：没试过的事情，怎么知道好不好玩？',
+      '喜欢给自己安排新任务，偶尔也会被任务追着跑。',
+      '正在努力成为一个既有趣又有实力的大人。',
+      '比起标准答案，我更喜欢探索不同的可能性。',
+      '有时候行动力爆棚，有时候只想躺平充电。',
+      '我的兴趣爱好可能比我的空闲时间还多。',
+      '对新鲜事物几乎没有抵抗力，尤其是有趣的新工具。',
+      '一边努力自律，一边和手机争夺时间控制权。',
+      '人生还没找到最终版本，但已经更新了很多次。',
+      '如果人生是一场游戏，我应该属于支线任务特别多的玩家。',
+      '脑子里经常冒出新点子，待办清单都快装不下了。',
+      '我的收藏夹里有一百家想去的店，实际打卡进度还在努力追赶中。',
+      '热门的东西总想凑个热闹，主打一个流行趋势不能落下我。',
+      '演唱会、音乐剧、电影、各种演出……只要能用眼睛看、用心感受的精彩，我都想亲自到场。'
+    ];
+    let toastTimer,lastFocus,currentFactIndex=-1,currentSlide=0,carouselTimer;
+
+    function showToast(message){
+      toast.textContent=message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer=setTimeout(()=>toast.classList.remove('show'),2200);
+    }
+
+    document.querySelectorAll('.tag').forEach(tag=>{
+      tag.addEventListener('click',()=>{
+        tag.classList.add('is-pressed');
+        setTimeout(()=>tag.classList.remove('is-pressed'),160);
+        showToast(tag.dataset.message);
+      });
+    });
+
+    function greet(){showToast('你好呀，很高兴认识你！')}
+    photoSurface.addEventListener('click',greet);
+    photoSurface.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();greet()}});
+    document.getElementById('menuButton').addEventListener('click',()=>showToast('更多内容正在准备中……'));
+
+    function goToSlide(index){
+      currentSlide=(index+slides.length)%slides.length;
+      photoTrack.style.transform=`translateX(-${currentSlide*100}%)`;
+      carouselDots.forEach((dot,dotIndex)=>dot.classList.toggle('is-active',dotIndex===currentSlide));
+    }
+    function stopCarousel(){clearInterval(carouselTimer)}
+    function startCarousel(){stopCarousel();if(!reducedMotion&&slides.length>1)carouselTimer=setInterval(()=>goToSlide(currentSlide+1),4500)}
+    photoCard.addEventListener('mouseenter',stopCarousel);
+    photoCard.addEventListener('mouseleave',startCarousel);
+    photoCard.addEventListener('focusin',stopCarousel);
+    photoCard.addEventListener('focusout',startCarousel);
+    startCarousel();
+
+    function showRandomFact(){
+      let nextIndex;
+      do{nextIndex=Math.floor(Math.random()*facts.length)}while(nextIndex===currentFactIndex&&facts.length>1);
+      currentFactIndex=nextIndex;
+      inlineFact.textContent=facts[nextIndex];
+    }
+    randomTrigger.addEventListener('click',showRandomFact);
+
+    const modes={
+      work:{color:'var(--pink)',number:'01 / 04',word:'WORK<br>MODE',tagline:'LEARNING BY DOING',title:'在真实业务里，持续解锁新技能。',body:'曾经在会计师事务所接触审计工作，也让我对数字和细节越来越敏感。现在进入制造企业，接触淘宝运营、产品宣传、短视频，也在学习机械图纸、客户沟通和销售。',tags:['审计经历','制造业探索','多面手养成中']},
+      study:{color:'var(--yellow)',number:'02 / 04',word:'STUDY<br>MODE',tagline:'KEEP LEARNING',title:'学生身份，还没舍得卸载。',body:'本科毕业于常州大学，目前在河海大学攻读非全日制会计硕士。除了专业学习，我也在准备提升英语能力，探索AI工具和其他新技能。<br><br>学习不一定总是轻松，但发现自己又学会了一点新东西，真的很有成就感。',tags:['会计硕士','英语学习','持续充电']},
+      create:{color:'var(--blue)',number:'03 / 04',word:'CREATE<br>MODE',tagline:'IDEAS INTO THINGS',title:'脑洞很多，正在逐个施工。',body:'我喜欢把脑袋里突然冒出来的想法变成真实的东西。从产品宣传海报、短视频，到智能衣橱网页和一些AI小实验，虽然不一定每个作品都很成熟，但从零到一的过程让我很上瘾。',tags:['AI探索','视觉创作','想法落地']},
+      life:{color:'var(--green)',number:'04 / 04',word:'LIFE<br>MODE',tagline:'ENJOY THE MOMENT',title:'认真生活，也认真凑热闹。',body:'喜欢探店、旅行，也喜欢演唱会、音乐剧、电影和各种演出。对热门的新鲜事物总有点抵抗不住。<br><br>比起隔着屏幕看别人的精彩，我更想自己去现场，把喜欢的东西变成真实的体验。',tags:['探店','旅行','现场体验']}
+    };
+    const workDetails={
+      past:{label:'过去 · 审计',title:'在数字与细节中打基础。',text:'曾经在会计师事务所接触审计工作，与财务报表、审计底稿和数字打交道，也让我慢慢练出了对数字和细节的敏感度。',quote:'“Excel不会骗人，但它偶尔会让我崩溃。”'},
+      now:{label:'现在 · 制造业',title:'在真实业务中不断解锁新技能。',text:'从淘宝运营、产品宣传、短视频，到机械图纸、客户沟通和销售学习，每天都在接触新的业务环节。',quote:'“以前研究数字对不对，现在研究产品怎么卖。”'}
+    };
+    let currentMode='work',currentWork='now';
+    function keywords(items){return `<div class="keyword-row">${items.map(item=>`<span class="keyword">${item}</span>`).join('')}</div>`}
+    function renderMode(mode){
+      currentMode=mode;const data=modes[mode];document.getElementById('aboutLayout').style.setProperty('--mode-color',data.color);document.getElementById('coverNumber').textContent=data.number;document.getElementById('coverWord').innerHTML=data.word;document.getElementById('coverTagline').textContent=data.tagline;document.querySelectorAll('.mode-tab').forEach(tab=>tab.classList.toggle('is-active',tab.dataset.mode===mode));
+      let extra='';
+      if(mode==='work'){const detail=workDetails[currentWork];extra=`<div class="work-switch"><button class="mini-tab ${currentWork==='past'?'is-active':''}" type="button" data-work="past">过去 · 审计</button><button class="mini-tab ${currentWork==='now'?'is-active':''}" type="button" data-work="now">现在 · 制造业</button></div><div class="work-detail"><h3>${detail.title}</h3><p>${detail.text}</p></div><div class="work-note"><small>A LITTLE WORK CONFESSION</small><strong>${detail.quote}</strong></div>`}
+      if(mode==='study')extra='<div class="skills-box"><small>SKILLS UNLOCKED</small><div class="skills-list"><span>初级会计职称</span><span>英语四级</span><span>Excel / Office</span><span>持续学习中</span></div></div>';
+      if(mode==='create')extra='<button class="text-link" type="button" data-go="projectsPage">看看我的奇思妙想 →</button>';
+      document.getElementById('modeStory').innerHTML=`<h2>${data.title}</h2><p>${data.body}</p>${keywords(data.tags)}${extra}`;
+      document.querySelectorAll('[data-work]').forEach(button=>button.addEventListener('click',()=>{currentWork=button.dataset.work;renderMode('work')}));
+      document.querySelectorAll('[data-go]').forEach(button=>button.addEventListener('click',()=>openPage(button.dataset.go)));
+    }
+    document.querySelectorAll('.mode-tab').forEach(tab=>tab.addEventListener('click',()=>renderMode(tab.dataset.mode)));
+    renderMode('work');
+
+    const journey=[
+      {time:'2017.09—2022.06',short:'会计启程',chapter:'CHAPTER 01',title:'初始地图｜会计专业启程',meta:'常州刘国钧高等职业技术学校',text:'从这里开始接触会计专业，也慢慢积累了课堂之外的经历。除了学习，我还参与校园活动、志愿服务，在一次次尝试中认识了更多不同的自己。',tags:['会计启程','校园活动','志愿服务'],color:'var(--pink)',highlights:['参与校园晚会筹备，包括场地协调、物资采购和人员分工。','参加无偿献血、敬老院慰问等志愿活动。','曾获得创新创业知识竞赛一等奖。']},
+      {time:'2020.09—2023.12',short:'本科进阶',chapter:'CHAPTER 02',title:'知识升级｜本科进阶',meta:'常州大学 · 会计学',text:'在原有专业基础上继续学习会计知识，也开始更认真地思考未来的发展方向。学习这件事并不总是轻松，但它让我拥有了更多选择。',tags:['会计学本科','专业进阶','更多可能'],color:'var(--yellow)'},
+      {time:'2022.08—2025.10',short:'审计副本',chapter:'CHAPTER 03',title:'职场初探｜审计副本开启',meta:'常州正则人和会计师事务所 · 审计助理',text:'第一次真正进入职场，在会计师事务所度过了近三年的时间。从整理审计底稿、核对数字，到参与现场审计、与客户沟通，我逐渐理解了专业工作需要的细致、耐心与责任感。<br><br>也因为接触了不同类型的企业和项目，看到了课堂之外更真实的商业世界。',tags:['审计助理','近三年职场经历','专业成长'],color:'var(--blue)',highlights:['国有水务企业年度财务报表审计','能源企业年度财务审计','公办机构财政专项资金绩效评价','经济责任审计、破产清算等其他项目']},
+      {time:'2026—NOW',short:'研究生模式',chapter:'CHAPTER 04',title:'重返校园｜研究生模式开启',meta:'河海大学 · 非全日制会计硕士 MPAcc',text:'工作之后，再次开启学生身份。<br><br>一边接触真实的工作场景，一边继续学习专业知识。虽然时间安排变得更紧凑，但也很期待把课堂上的知识和实际经历联系起来。',tags:['河海大学','MPAcc','工作与学习并行'],color:'var(--green)'},
+      {time:'2026.04—NOW',short:'跨界探索',chapter:'CHAPTER 05',title:'现在进行时｜跨界探索中',meta:'制造业探索 × AI × 创作 × 生活',text:'从熟悉的审计工作转向制造业，开始接触淘宝运营、产品宣传、短视频、机械图纸、客户沟通和销售。<br><br>与此同时，我也在探索AI工具、制作有趣的小网页、尝试新的创作方式。人生好像一下子多了很多支线任务。虽然还没全部完成，但每解锁一个新技能，都觉得很有意思。',tags:['制造业探索','AI新工具','创意实践','持续升级'],color:'#cfe3d2'}
+    ];
+    function renderJourney(index){
+      const item=journey[index];document.querySelectorAll('.timeline-node').forEach((node,i)=>node.classList.toggle('is-active',i===index));const highlight=item.highlights?`<details class="highlights"><summary>${index===2?'曾经参与的项目类型':'阶段亮点'}</summary><ul>${item.highlights.map(text=>`<li>${text}</li>`).join('')}</ul></details>`:'';document.getElementById('journeyStory').style.setProperty('--journey-color',item.color);document.getElementById('journeyStory').innerHTML=`<div class="journey-copy"><p class="page-kicker">${item.chapter}</p><h2>${item.title}</h2><p class="journey-meta">${item.meta}</p><p>${item.text}</p>${keywords(item.tags)}${highlight}</div><div class="journey-cover"><span class="journey-chapter">${item.chapter} / LIFE MAP</span><strong class="journey-big-year">${item.time.replace('—','<br>')}</strong><span class="cover-tagline">${item.short.toUpperCase()}</span></div>`;
+    }
+    const timelineYears=['2017','2020','2022','2026','NOW'];
+    const timelineLabels=['新起点','本科','审计','读研','探索中'];
+    const timelineMap=document.querySelector('.timeline-map');
+    document.getElementById('timelineNav').innerHTML=journey.map((item,i)=>`<button class="timeline-node ${i===4?'is-active':''}" type="button" data-journey="${i}" aria-label="${timelineYears[i]} ${timelineLabels[i]}"><span class="timeline-dot">${i+1}</span><span class="timeline-year">${timelineYears[i]}</span><span class="timeline-label">${timelineLabels[i]}</span></button>`).join('');
+    document.querySelectorAll('[data-journey]').forEach(button=>button.addEventListener('click',()=>{renderJourney(Number(button.dataset.journey));if(timelineMap.scrollWidth>timelineMap.clientWidth)timelineMap.scrollTo({left:Math.max(0,button.offsetLeft-timelineMap.clientWidth/2+button.offsetWidth/2),behavior:reducedMotion?'auto':'smooth'})}));
+    renderJourney(4);
+
+    const projects=[
+      {name:'我的智能衣橱',category:'WEB APP',tagline:'每天穿什么？不如做个小工具来解决。',description:'尝试把衣服管理和穿搭灵感整理成一个适合手机使用的网页应用，让日常穿搭变得更方便。',tags:['网页应用','生活工具','AI辅助创作'],status:'已有网页版本',color:'var(--pink)',why:'想把每天“穿什么”的小烦恼，变成一个真正顺手的生活工具。',process:'整理衣物管理、穿搭灵感与手机端操作逻辑，并尝试用AI辅助把想法做成网页。',result:'已有可访问的网页版本，后续仍可持续补充功能。',url:'https://yixu-wardrobe-0923.rainaji99044.chatgpt.site'},
+      {name:'产品视觉实验室',category:'VISUAL DESIGN',tagline:'谁说机械产品只能用枯燥的方式介绍？',description:'尝试制作工业产品宣传海报、产品画册和电商展示内容，让专业机械产品也能以更清晰、更有设计感的方式呈现。',tags:['产品海报','画册设计','工业品牌'],status:'已有海报作品，持续完善中',color:'var(--yellow)',why:'希望专业机械产品也能被更清楚、更有设计感地理解。',process:'尝试产品卖点整理、版式设计、宣传海报与画册页面表达。',result:'已有部分海报作品，整体视觉体系仍在持续完善。'},
+      {name:'视频创作计划',category:'VIDEO CREATION',tagline:'从一句文案，到一个真正能播放的画面。',description:'尝试产品拍摄、口播脚本、短视频剪辑，也在探索AI工具辅助视频制作的可能性。',tags:['拍摄脚本','短视频','视频剪辑'],status:'持续探索中',color:'var(--blue)',why:'想知道一段文字如何经过脚本、拍摄和剪辑，真正变成会动的画面。',process:'尝试产品拍摄、口播脚本、短视频剪辑，并探索AI辅助视频制作。',result:'仍在持续探索中；没有完成的内容不会被标记为成片。'},
+      {name:'AI脑洞实验室',category:'AI EXPERIMENTS',tagline:'我可能不是程序员，但我真的很爱折腾新工具。',description:'从小型网页应用到各种有趣的AI实验，喜欢研究新工具究竟能帮我实现多少想法。',tags:['AI探索','创意实验','小项目'],status:'持续更新中',color:'var(--green)',why:'对新工具没有太多抵抗力，也喜欢验证脑袋里的想法究竟能不能实现。',process:'从小型网页到不同类型的AI实验，边学边试，记录真正有用的做法。',result:'持续更新中，每次实验都是一个新的小版本。',experiments:['英语背单词小工具','婚礼影像创作']}
+    ];
+    document.getElementById('projectGrid').innerHTML=projects.map((p,i)=>`<button class="project-card" type="button" data-project="${i}" style="--project-color:${p.color}"><span class="project-number">0${i+1}</span><span class="project-meta">PROJECT / ${p.category}</span><span class="project-open" aria-hidden="true">↗</span><span class="project-visual type-${i}" aria-hidden="true"><span></span></span><h2>${p.name}</h2><p>${p.tagline}</p><span class="project-status">${p.status}</span></button>`).join('');
+    const projectModal=document.getElementById('projectModal'),closeProject=document.getElementById('closeProject');
+    function openProject(index){const p=projects[index];lastFocus=document.activeElement;document.getElementById('projectModalIndex').textContent=`PROJECT FILE / 00${index+1} · ${p.category}`;document.getElementById('projectModalTitle').textContent=p.name;document.getElementById('projectModalTagline').textContent=p.tagline;const experiments=p.experiments?`<div class="project-section project-experiments"><strong>MORE EXPERIMENTS / 其他正在探索</strong><ul>${p.experiments.map(item=>`<li>${item}<span>探索中</span></li>`).join('')}</ul></div>`:'';document.getElementById('projectSections').innerHTML=`<div class="project-section"><strong>WHY / 为什么想做</strong><p>${p.why}</p></div><div class="project-section"><strong>PROCESS / 做了什么</strong><p>${p.process}</p></div><div class="project-section"><strong>RESULT / 当前成果</strong><p>${p.result}</p></div>${experiments}`;const link=document.getElementById('projectLink');link.hidden=!p.url;if(p.url)link.href=p.url;projectModal.hidden=false;document.body.classList.add('modal-open');closeProject.focus()}
+    function closeProjectModal(){projectModal.hidden=true;document.body.classList.remove('modal-open');lastFocus?.focus()}
+    document.querySelectorAll('[data-project]').forEach(card=>card.addEventListener('click',()=>openProject(Number(card.dataset.project))));closeProject.addEventListener('click',closeProjectModal);projectModal.addEventListener('click',event=>{if(event.target===projectModal)closeProjectModal()});
+    const interests=[
+      {title:'旅行漫游',eng:'TRAVEL DIARY',line:'世界那么大，我想多去几个地方看看。',body:'喜欢自然风景、古镇、当地美食，也很享受旅行中拍照记录的过程。比起单纯打卡，更想留下真正有记忆点的体验。',tags:['自然风景','古镇','旅行拍照','当地美食'],color:'var(--pink)'},
+      {title:'现场快乐',eng:'LIVE MOMENTS',line:'有些快乐，真的要亲自到现场才算数。',body:'演唱会、音乐剧、电影和各种现场演出，只要是感兴趣的内容，就想亲自感受现场的氛围。',tags:['演唱会','音乐剧','电影','现场演出'],color:'var(--yellow)'},
+      {title:'探店雷达',eng:'FOOD & CAFÉS',line:'收藏夹永远比实际打卡进度快一步。',body:'喜欢发现有意思的餐厅和咖啡店，也愿意为一家心动的小店专门安排一次出门。',tags:['探店','美食','咖啡店','新鲜体验'],color:'var(--blue)'},
+      {title:'阅读与观影',eng:'BOOKS & MOVIES',line:'喜欢在别人的故事里，发现一点自己的答案。',body:'喜欢看小说、电影，也喜欢在故事结束后回味人物的选择和成长。有些作品看完就过去了，有些却会让我想很久。',tags:['小说','电影','人物成长','读后感'],color:'var(--green)'}
+    ];
+    const interestGrid=document.getElementById('interestGrid'),interestDetailView=document.getElementById('interestDetailView');
+    interestGrid.innerHTML=interests.map((item,i)=>`<button class="interest-card" type="button" data-interest="${i}" style="--interest-color:${item.color}" aria-expanded="false"><small>0${i+1} / ${item.eng}</small><h3>${item.title}</h3><p>${item.line}</p><div class="interest-detail"><p>${item.body}</p>${keywords(item.tags)}</div></button>`).join('');
+    function closeInterestDetail(){interestDetailView.hidden=true;interestDetailView.innerHTML='';interestGrid.hidden=false;document.querySelector('#collectionPanel .panel-top').hidden=false}
+    document.querySelectorAll('.interest-card').forEach(card=>card.addEventListener('click',()=>{const item=interests[Number(card.dataset.interest)];if(matchMedia('(max-width:720px)').matches){interestGrid.hidden=true;document.querySelector('#collectionPanel .panel-top').hidden=true;interestDetailView.style.setProperty('--interest-color',item.color);interestDetailView.innerHTML=`<button class="interest-back" type="button">← 返回兴趣收藏夹</button><article class="interest-detail-card"><small>${item.eng}</small><h3>${item.title}</h3><p>${item.body}</p>${keywords(item.tags)}</article>`;interestDetailView.hidden=false;interestDetailView.querySelector('.interest-back').addEventListener('click',closeInterestDetail);document.getElementById('collectionPanel').scrollTo({top:0,behavior:'smooth'})}else{card.classList.toggle('is-open');card.setAttribute('aria-expanded',String(card.classList.contains('is-open')))}}));
+
+    const quizQuestions=[['突然拥有一个完全自由的周末，你会？','出门探店、旅行，体验新鲜事物','宅在家里，享受自己的时间'],['发现一个很有趣的新东西，你会？','先试试！说不定能发现新大陆','先收藏，等有时间再研究'],['如果一起去旅行，你更喜欢哪种方式？','行程充实，尽可能解锁更多景点','慢慢逛、拍拍照，享受悠闲的旅途'],['脑袋里突然冒出一个新点子，你会？','马上动手，边做边调整','先放进收藏夹，等灵感成熟'],['你更喜欢哪一种生活？','不断探索，解锁更多新体验','按照自己的节奏，把日常过得充实']];let quizIndex=0,quizAnswers=[];
+    function renderQuiz(){const box=document.getElementById('quizContent');if(quizIndex>=quizQuestions.length){const score=quizAnswers.filter(answer=>answer==='A').length*20;const result=score>=80?['同频玩家 · 默契爆表！','看来我们都喜欢探索新鲜事物，下次有好玩的记得叫上我！']:score>=40?['互补搭子 · 有点意思！','我们既有相似的地方，也有各自的小世界，说不定能互相安利很多新东西。']:['反差玩家 · 解锁新组合！','我们的选择很不一样，但认识不同的人，本身就是一种有趣的冒险。'];box.innerHTML=`<div class="result-score">${score}%</div><h3>${result[0]}</h3><p>${result[1]}</p><p><strong>看来我们有不少可以聊的话题，要不要打个招呼？</strong></p><div class="quiz-actions"><button class="primary-btn" type="button" id="goNote">给我留张小纸条 →</button><button class="secondary-btn" type="button" id="restartQuiz">重新测试</button></div>`;document.getElementById('goNote').addEventListener('click',()=>openFunPanel('note'));document.getElementById('restartQuiz').addEventListener('click',()=>{quizIndex=0;quizAnswers=[];renderQuiz()});return}const q=quizQuestions[quizIndex];box.innerHTML=`<div class="quiz-progress">0${quizIndex+1} / 05</div><div class="quiz-question">Q${quizIndex+1}｜${q[0]}</div><div class="answers"><button class="answer" type="button" data-answer="A">A. ${q[1]}</button><button class="answer" type="button" data-answer="B">B. ${q[2]}</button></div><div class="quiz-actions">${quizIndex?'<button class="secondary-btn" type="button" id="prevQuiz">← 上一题</button>':''}</div>`;box.querySelectorAll('[data-answer]').forEach(button=>button.addEventListener('click',()=>{quizAnswers[quizIndex]=button.dataset.answer;quizIndex++;renderQuiz()}));document.getElementById('prevQuiz')?.addEventListener('click',()=>{quizIndex--;renderQuiz()})}
+    renderQuiz();
+    function closeFunPanels(){document.querySelectorAll('.interaction-panel').forEach(panel=>panel.hidden=true);document.body.classList.remove('modal-open');closeInterestDetail()}
+    function openFunPanel(name){document.querySelectorAll('.interaction-panel').forEach(panel=>panel.hidden=true);document.getElementById(`${name}Panel`).hidden=false;document.body.classList.add('modal-open')}
+    document.querySelectorAll('.fun-card').forEach(card=>card.addEventListener('click',()=>openFunPanel(card.dataset.panel)));document.querySelectorAll('.panel-close').forEach(button=>button.addEventListener('click',closeFunPanels));
+    async function copyMessage(text){try{await navigator.clipboard.writeText(text);return true}catch(error){const helper=document.createElement('textarea');helper.value=text;helper.setAttribute('readonly','');helper.style.position='fixed';helper.style.opacity='0';document.body.appendChild(helper);helper.select();const copied=document.execCommand('copy');helper.remove();return copied}}
+    document.getElementById('noteForm').addEventListener('submit',async event=>{event.preventDefault();const name=document.getElementById('noteName').value.trim();const message=document.getElementById('noteText').value.trim();const feedback=document.getElementById('noteFeedback');const text=`${name?name+'：':''}${message}`;feedback.textContent=await copyMessage(text)?'留言已复制，可以发送给我啦':'复制失败，请长按留言内容后手动复制。'});
+
+    const homePage=document.querySelector('.page');
+    function openPage(pageId){homePage.style.display='none';document.querySelectorAll('.inner-page').forEach(page=>page.classList.toggle('is-active',page.id===pageId));document.body.classList.add('inner-open');document.body.style.overflow='';window.scrollTo(0,0);if(pageId==='journeyPage')requestAnimationFrame(()=>{timelineMap.scrollLeft=Math.max(0,timelineMap.scrollWidth-timelineMap.clientWidth)})}
+    function returnHome(){document.querySelectorAll('.inner-page').forEach(page=>page.classList.remove('is-active'));closeFunPanels();homePage.style.display='grid';document.body.classList.remove('inner-open');document.body.style.overflow='';window.scrollTo(0,0);startCarousel()}
+    document.querySelectorAll('.back-home').forEach(button=>button.addEventListener('click',returnHome));
+
+    function openPanel(card){
+      lastFocus=card;
+      card.classList.add('is-pressed');
+      setTimeout(()=>card.classList.remove('is-pressed'),170);
+      modalTitle.textContent=card.dataset.title;
+      modalIndex.textContent=card.dataset.index;
+      modal.hidden=false;
+      document.body.style.overflow='hidden';
+      closeModal.focus();
+    }
+    function closePanel(){
+      modal.hidden=true;
+      document.body.style.overflow='';
+      if(lastFocus)lastFocus.focus();
+    }
+    const pageTargets=['aboutPage','journeyPage','projectsPage','funPage'];
+    document.querySelectorAll('.nav-card').forEach((card,index)=>card.addEventListener('click',()=>{card.classList.add('is-pressed');setTimeout(()=>card.classList.remove('is-pressed'),170);stopCarousel();openPage(pageTargets[index])}));
+    closeModal.addEventListener('click',closePanel);
+    modal.addEventListener('click',event=>{if(event.target===modal)closePanel()});
+    document.addEventListener('keydown',event=>{
+      if(event.key!=='Escape')return;
+      if(!projectModal.hidden)closeProjectModal();
+      else if(!modal.hidden)closePanel();
+      else if([...document.querySelectorAll('.interaction-panel')].some(panel=>!panel.hidden))closeFunPanels();
+    });
+  </script>
+</body>
+</html>
