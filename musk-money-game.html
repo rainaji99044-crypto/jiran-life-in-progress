@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#050505">
+<title>花掉马斯克的钱｜互动小游戏</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:Arial,"Microsoft YaHei";
+}
+
+body{
+    margin:0;
+    background:
+    radial-gradient(circle at top,#1d3557,#050505 70%);
+    color:white;
+    min-height:100vh;
+}
+
+.back-link{
+    position:fixed;
+    z-index:20;
+    top:max(14px,env(safe-area-inset-top));
+    left:14px;
+    padding:10px 14px;
+    border:1px solid #ffffff33;
+    border-radius:999px;
+    color:white;
+    background:#050505aa;
+    text-decoration:none;
+    font-size:14px;
+    backdrop-filter:blur(8px);
+}
+
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:30px;
+}
+
+
+h1{
+    text-align:center;
+    font-size:42px;
+    color:#00eaff;
+}
+
+
+.subtitle{
+    text-align:center;
+    color:#aaa;
+}
+
+
+.money-box{
+    margin-top:30px;
+    background:rgba(255,255,255,.08);
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 0 30px #00eaff55;
+}
+
+
+.money{
+    font-size:48px;
+    font-weight:bold;
+    color:#00ff99;
+}
+
+
+.progress{
+    height:25px;
+    background:#222;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:20px;
+}
+
+
+.bar{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#00ff99,#ff0000);
+}
+
+
+.shop{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+
+.card{
+    background:#111c;
+    border:1px solid #ffffff22;
+    padding:20px;
+    border-radius:20px;
+    transition:.3s;
+}
+
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 20px #00eaff;
+}
+
+
+.card h3{
+    color:#00eaff;
+}
+
+
+.price{
+    font-size:22px;
+    color:#ffd166;
+}
+
+
+button{
+
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+
+    background:#00eaff;
+    border:none;
+    border-radius:12px;
+
+    font-size:18px;
+    cursor:pointer;
+
+}
+
+
+button:hover{
+    background:#00ff99;
+}
+
+
+.log{
+
+    margin-top:30px;
+
+    background:#0008;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    height:180px;
+
+    overflow:auto;
+
+}
+
+
+.gameover{
+
+position:fixed;
+left:0;
+top:0;
+
+width:100%;
+height:100%;
+
+background:#000e;
+
+display:none;
+
+align-items:center;
+justify-content:center;
+
+text-align:center;
+
+font-size:40px;
+
+z-index:99;
+
+}
+
+
+.gameover div{
+
+animation:pulse 1s infinite;
+
+}
+
+
+@keyframes pulse{
+
+50%{
+transform:scale(1.1);
+}
+}
+
+@media(max-width:600px){
+    .container{padding:72px 14px 28px}
+    h1{margin:0;font-size:clamp(30px,10vw,42px);line-height:1.05}
+    .subtitle{margin-top:10px}
+    .money-box{margin-top:22px;padding:22px 14px}
+    .money{font-size:clamp(28px,9vw,48px);overflow-wrap:anywhere}
+    .shop{margin-top:24px;grid-template-columns:1fr 1fr;gap:10px}
+    .card{padding:14px;border-radius:15px}.card h3{margin:0 0 12px;font-size:15px;line-height:1.3}.price{font-size:16px}
+    button{padding:11px 8px;font-size:15px}.log{height:150px;padding:14px}.gameover{padding:24px;font-size:27px}
+}
+
+@media(max-width:360px){.shop{grid-template-columns:1fr}}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+<a class="back-link" href="index.html">← 返回个人主页</a>
+
+
+<div class="container">
+
+
+<h1>🚀 Elon Money Burn</h1>
+
+<div class="subtitle">
+模拟花光世界首富的钱
+</div>
+
+
+
+<div class="money-box">
+
+<div>
+当前资产
+</div>
+
+<div class="money" id="money">
+$865,000,000,000
+</div>
+
+
+<div class="progress">
+
+<div class="bar" id="bar"></div>
+
+</div>
+
+
+<p>
+已花费：
+<span id="spent">$0</span>
+</p>
+
+
+</div>
+
+
+
+<div class="shop" id="shop"></div>
+
+
+
+<div class="log" id="log">
+
+<h3>消费记录：</h3>
+
+</div>
+
+
+
+</div>
+
+
+
+<div class="gameover" id="gameover">
+
+<div>
+
+💀 GAME OVER<br><br>
+
+你成功花光了马斯克的钱！<br>
+
+🚀 Tesla暂停研发<br>
+🤖 AI停止计算<br>
+🌎 世界进入震惊模式
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+let money = 865000000000;
+
+let total = money;
+
+
+const items=[
+
+["🏠 私人豪宅","50000000"],
+
+["🏝 私人岛屿","300000000"],
+
+["🚗 布加迪跑车","3000000"],
+
+["✈️ 私人飞机","80000000"],
+
+["🏢 买下一栋摩天大楼","1000000000"],
+
+["🚀 建造火箭","100000000"],
+
+["🌕 月球基地","50000000000"],
+
+["🔥 火星基地","100000000000"],
+
+["🤖 AI超级计算机","20000000000"],
+
+["🛰 1000颗卫星","5000000000"],
+
+["🌎 给全世界发红包","80000000000"],
+
+["🏳️ 买一个小国家","50000000000"]
+
+];
+
+
+
+function format(num){
+
+return "$"+num.toLocaleString();
+
+}
+
+
+
+function render(){
+
+document.getElementById("money").innerHTML=format(money);
+
+
+let spent=total-money;
+
+
+document.getElementById("spent").innerHTML=format(spent);
+
+
+let percent=spent/total*100;
+
+
+document.getElementById("bar").style.width=
+percent+"%";
+
+
+if(money<=0){
+
+money=0;
+
+document.getElementById("money").innerHTML="$0";
+
+document.getElementById("gameover")
+.style.display="flex";
+
+}
+
+}
+
+
+
+
+function buy(name,price){
+
+
+if(money<price){
+
+alert("余额不足！你已经没有这么多钱了");
+
+return;
+
+}
+
+
+money-=price;
+
+
+let log=document.getElementById("log");
+
+
+log.innerHTML+=
+"<p>💸 购买 "+name+
+" - "+format(price)+
+"</p>";
+
+
+randomEvent();
+
+
+render();
+
+
+}
+
+
+
+function randomEvent(){
+
+let r=Math.random();
+
+
+if(r<0.15){
+
+let events=[
+
+"📈 Tesla股票突然上涨，你的钱增加了10亿美元",
+
+"🚀 SpaceX获得巨额投资",
+
+"🤖 AI机器人帮你赚钱"
+
+];
+
+
+let e=events[
+Math.floor(Math.random()*events.length)
+];
+
+
+alert(e);
+
+money+=1000000000;
+
+}
+
+
+}
+
+
+
+let shop=document.getElementById("shop");
+
+
+items.forEach(item=>{
+
+
+let card=document.createElement("div");
+
+card.className="card";
+
+
+card.innerHTML=
+
+`
+<h3>${item[0]}</h3>
+
+<div class="price">
+${format(Number(item[1]))}
+</div>
+
+<button>
+立即购买
+</button>
+
+`;
+
+
+card.querySelector("button")
+.onclick=()=>buy(item[0],Number(item[1]));
+
+
+shop.appendChild(card);
+
+
+});
+
+
+
+render();
+
+
+</script>
+
+
+</body>
+</html>
